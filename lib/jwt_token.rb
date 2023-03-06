@@ -5,6 +5,7 @@ class JsonWebToken
     SECRET_KEY = "1234"
   
     def self.encode(payload)
+      # payload[:timestamp] = Time.now.inspect
       JWT.encode(payload, SECRET_KEY, 'HS256', { typ: 'JWT' })
     end
   
@@ -13,3 +14,4 @@ class JsonWebToken
       decoded
     end
 end
+

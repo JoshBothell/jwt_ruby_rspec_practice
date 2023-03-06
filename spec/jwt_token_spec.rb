@@ -32,10 +32,10 @@ describe JsonWebToken do
             end
         end
     end
-    context "given a dynamic, time-based payload" do
+    context "given a dynamic, time-stamped payload" do
         it "correctly decrypts to the original payload" do
             time = Time.now
-            payload = { "timestamp"=> time.inspect }
+            payload = { "timestamp"=> time.inspect, "dynamic"=> rand() }
             token = JsonWebToken.encode(payload)
             decoded_payload = JsonWebToken.decode(token)
             expect(decoded_payload).to eq(payload)
